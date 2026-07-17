@@ -24,11 +24,36 @@ filterButtons.forEach((button) => {
       const isActive = item === button;
       item.classList.toggle("active", isActive);
       item.setAttribute("aria-selected", String(isActive));
+      item.setAttribute("tabindex", isActive ? "0" : "-1");
     });
 
     panels.forEach((panel) => {
-      panel.classList.toggle("active", panel.dataset.panel === target);
+      const isActive = panel.dataset.panel === target;
+      panel.classList.toggle("active", isActive);
+      panel.hidden = !isActive;
     });
+  });
+});
+
+filterButtons.forEach((button, index) => {
+  button.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? filterButtons.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + filterButtons.length) % filterButtons.length;
+    filterButtons[nextIndex].focus();
+    filterButtons[nextIndex].click();
+  });
+});
+
+const readMoreButtons = [...document.querySelectorAll(".read-more")];
+
+readMoreButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const details = document.getElementById(button.getAttribute("aria-controls"));
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!isExpanded));
+    button.textContent = isExpanded ? "Read more" : "Show less";
+    details.hidden = isExpanded;
   });
 });
 
