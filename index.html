@@ -223,15 +223,15 @@
         </div>
 
         <div class="filter-controls" role="tablist" aria-label="Research filter">
-          <button id="presentations-tab" class="filter-button active" type="button" data-filter="presentations" role="tab" aria-selected="true" aria-controls="presentations-panel" tabindex="0">
-            Presentations
-          </button>
-          <button id="publications-tab" class="filter-button" type="button" data-filter="publications" role="tab" aria-selected="false" aria-controls="publications-panel" tabindex="-1">
+          <button id="publications-tab" class="filter-button active" type="button" data-filter="publications" role="tab" aria-selected="true" aria-controls="publications-panel" tabindex="0">
             Publications
+          </button>
+          <button id="presentations-tab" class="filter-button" type="button" data-filter="presentations" role="tab" aria-selected="false" aria-controls="presentations-panel" tabindex="-1">
+            Presentations
           </button>
         </div>
 
-        <div id="presentations-panel" class="research-grid active" data-panel="presentations" role="tabpanel" aria-labelledby="presentations-tab">
+        <div id="presentations-panel" class="research-grid" data-panel="presentations" role="tabpanel" aria-labelledby="presentations-tab" hidden>
           <article>
             <span>Dec 2025</span>
             <h3>Delays at the desktop: Evaluating login times in Orthopaedic workspaces</h3>
@@ -264,7 +264,7 @@
           </article>
         </div>
 
-        <div id="publications-panel" class="research-grid" data-panel="publications" role="tabpanel" aria-labelledby="publications-tab" hidden>
+        <div id="publications-panel" class="research-grid active" data-panel="publications" role="tabpanel" aria-labelledby="publications-tab">
           <article>
             <span>2025</span>
             <h3>Robotic-assisted total knee arthroplasty with MAKO is associated with improved functional outcomes.</h3>
